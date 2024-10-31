@@ -1,0 +1,85 @@
+body
+{
+    background: #F1F1F1 !important;
+}
+
+#wpbody
+{
+    background: #F1F1F1;
+    color: #000;
+    text-align: center;
+}
+
+h1, h3
+{
+    color: #000;
+    text-align: center;
+    margin: 40px auto 50px auto !important;
+    position: relative;
+    margin: 0;
+}
+
+h1:after, h3:after
+{
+    content: '';
+    display: block;
+    position: absolute;
+    top: calc(100% + 5px);
+    left: 50%;
+    margin-top: 5px;
+    margin-left: -25px;
+    width: 50px;
+    height: 3px;
+    background-color: #2691e4;
+}
+
+
+.input-container 
+{
+    display: inline-block;
+    width: 45%;
+    text-align: left;
+    margin-bottom: 40px;
+}
+
+.input-container label
+{
+    display: block;
+    font-size: 14px;
+}
+
+.input-container span
+{
+    color: #777;
+    font-size: 12px;
+}
+
+.input-container input, .input-container select
+{
+    display: block;
+    width: 100%;
+}
+
+code
+{
+    font-size: 13px !important;
+    line-height: 35px !important;
+    box-shadow: 0 1px 3px 0 rgba(0,0,0,0.5) !important;
+    padding: 5px 10px !important;
+}
+
+.left, .right
+{
+    width: 50%;
+}
+
+.left
+{
+    float: left;
+}
+
+.right
+{
+    float: right;
+    padding: 0 5px;
+}

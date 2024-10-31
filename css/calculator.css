@@ -1,0 +1,522 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat|Open+Sans:400,700');
+
+.qc-quote-calculator
+{
+    position: relative;
+    box-sizing: border-box;
+    padding: 50px 50px 20px 50px;
+/*    background-color: rgba(24, 54, 74, 0.9);*/
+    background-attachment: fixed;
+    background-size: cover;
+/*    box-shadow: inset 0 0 0 1000px rgba(24, 54, 74, 0.9);*/
+    font-family: Open Sans;
+}
+
+.qc-quote-calculator .qc-loader
+{
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    z-index: 999;
+    top: 0;
+    left: 0;
+    background: rgba(0,0,0,0.5);
+    text-align: center;
+    opacity: 0;
+    display: none;
+    transition: 0.3s all;
+}
+
+.qc-quote-calculator .qc-loader:after
+{
+    content: '';
+    display: block;
+    position: absolute;
+    top: 50%;
+    margin-top: -25px;
+    left: 50%;
+    margin-left: -25px;
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    border: 2px solid;
+    border-top-color: transparent !important;
+    animation: 0.5s linear spin infinite;
+}
+
+.qc-quote-calculator h2
+{
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    margin-bottom: 30px;
+    position: relative;
+    font-family: Open Sans;
+}
+
+.qc-quote-calculator h2:after
+{
+    position: absolute;
+    left: 50%;
+    margin-left: -25px;
+    bottom: -5px;
+    width: 50px;
+    height: 3px;
+    content: "";
+}
+
+.qc-quote-calculator .row
+{
+    border-bottom: 1px solid rgba(255,255,255,0.3);
+    margin-top: 10px;
+}
+
+.qc-submit-container, .qc-calculate-price-container
+{
+    border: none !important;
+}
+
+.qc-quote-calculator .row > div
+{
+    padding-right: 5px;
+    padding-left: 5px;
+}
+
+.qc-quote-calculator input[type="text"]
+{
+    padding: 5px 10px !important;
+    height: auto;
+    font-size: 12px;
+    border: none;
+    border-radius: 0;
+    color: #111;
+    margin-bottom: 20px;
+    transition: 0.3s all;
+    font-family: Open Sans;
+    line-height: 1.5;
+    display: block;
+    width: 100%;
+}
+
+.ui-autocomplete-loading 
+{
+    background-image: url(../img/ajax-loader.gif);
+    background-repeat: no-repeat;
+    background-position: calc(100% - 10px) 50%;
+}
+
+.qc-quote-calculator input[type="text"]:focus, .qc-quote-calculator select:focus
+{
+    box-shadow: 0 0 10px 2px #2691e4;
+}
+
+.qc-quote-calculator input:focus
+{
+    border: none;
+    outline: none;
+}
+
+.qc-quote-calculator select 
+{
+    display: block;
+    width: 100%;
+    height: 28px;
+    padding: 4px 10px;
+    border-radius: 0;
+    margin-bottom: 20px;
+    line-height: 1.5;
+    font-size: 12px;
+    color: #555;
+    font-family: Open Sans;
+    background-color: #fff;
+}
+
+.qc-quote-calculator label
+{
+    font-size: 12px;
+    margin: 0;
+}
+
+.qc-quote-calculator .qc-submit-container, .qc-quote-calculator .qc-calculate-price-container
+{
+    text-align: center;
+    margin-top: 20px;
+}
+
+.qc-quote-calculator .qc-submit-container input, .qc-quote-calculator .qc-calculate-price-container input
+{
+    font-size: 15px;
+    height: 45px;
+    padding: 0 25px;
+    border-radius: 0;
+    cursor: pointer;
+    display: inline-block;
+    transition: 0.3s all;
+}
+
+.qc-quote-calculator .qc-submit-container input:hover, .qc-quote-calculator .qc-calculate-price-container input:hover, .booking-button-container a:hover
+{
+    box-shadow: 0 0 15px 0px rgba(255,255,255,0.3);
+}
+
+.qc-quote-calculator .info 
+{
+    color: #FFF;
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+    background: #1D587C;
+    line-height: 1.3;
+    text-align: center;
+    border-radius: 100%;
+    position: absolute;
+    cursor: help;
+    margin-left: 5px;
+    margin-top: -2px;
+}
+
+.qc-quote-calculator .info:before 
+{
+    display: none;
+    content: '';
+    width: 0;
+    height: 0;
+    border: 7px solid transparent;
+        border-right-color: transparent;
+    border-right-color: #2691e4;
+    top: 3px;
+    left: 17px;
+    position: absolute;
+    z-index: 10;
+}
+
+.qc-quote-calculator .info:after 
+{
+    display: none;
+    content: attr(data-info);
+    position: absolute;
+    left: 30px;
+    top: -17px;
+    width: 200px;
+    padding: 5px;
+    background: #FFF;
+    color: #444;
+    border: 1px solid #2691e4;
+    z-index: 9;
+    font-size: 13px;
+}
+
+.qc-quote-calculator .info:hover:before, .qc-quote-calculator .info:hover:after
+{
+    display: block;
+}
+
+.qc-quote-calculator .qc-quote-price, .qc-quote-calculator .qc-estimated-delivery
+{
+    text-align: center;
+    margin-top: 20px;
+    font-size: 20px;
+}
+
+.qc-quote-calculator .qc-quote-price span, .qc-quote-calculator .qc-estimated-delivery span
+{
+    color: #2691e4;
+    text-shadow: 0 0px 5px rgba(255,255,255,0.2);
+}
+
+.qc-quote-calculator .qc-email-container
+{
+    text-align: center;
+    font-size: 15px;
+}
+
+.qc-quote-calculator .qc-header 
+{
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.qc-quote-calculator .qc-header a
+{
+    color: inherit;
+    font-size: 10px;
+}
+
+.qc-quote-calculator .qc-header img
+{
+    max-width: 200px;
+    width: 100%;
+}
+
+.invalid-input
+{
+    box-shadow: 0 0 3px 1px #bd362f, 0 0 3px 1px #bd362f inset !important;
+}
+
+.hidden
+{
+    display: none;
+}
+
+.quote-details
+{
+    background-size: cover;
+    box-shadow: inset 0 0 0 1000px rgba(24, 54, 74, 0.9);
+    background-attachment: fixed;
+    box-sizing: border-box;
+    padding: 10px 0px 10px 10px;
+    font-family: Open Sans;
+}
+
+.quote-details h2.styled-title 
+{
+    color: #FFF;
+    text-align: center;
+    padding: 0;
+    margin-bottom: 30px;
+    position: relative;
+    margin: 0;
+    margin-top: 15px;
+}
+
+.quote-details h2.styled-title:after
+{
+    content: '';
+    display: block;
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-top: 5px;
+    margin-left: -25px;
+    width: 50px;
+    height: 3px;
+    background-color: #2691e4;
+}
+
+table.booking-table
+{
+    width: 90%;
+    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.5);
+    max-width: 700px;
+    margin: 50px auto 0px auto;
+}
+
+table.booking-table, table.booking-table tr, table.booking-table th, table.booking-table td
+{
+    color: #333;
+    border: none;
+    border-collapse: collapse;
+    vertical-align: middle;
+    font-family: Raleway;
+    cursor: default;
+    transition: 0.3s all;
+}
+
+table.booking-table th, table.booking-table td
+{
+    padding: 15px 25px;
+}
+
+table.booking-table th
+{
+    background: #EEE;
+    color: #0279c7;
+    text-align: left;
+    font-family: Montserrat;
+}
+
+table.booking-table tr:nth-child(even) th
+{
+    background-color: #FFF;
+}
+
+table.booking-table td
+{
+    background: #FFF;
+}
+
+table.booking-table tr:nth-child(odd) td
+{
+    background: #EEE;
+}
+
+table.booking-table tr:hover td, table.booking-table tr:hover th
+{
+    background: #3285c6;
+    color: #FFF;
+}
+
+table.booking-table tr:nth-child(4) td:nth-child(2), table.booking-table tr:nth-child(5) td:nth-child(2)
+{
+    text-transform: capitalize;
+}
+
+.booking-button-container
+{
+    text-align: center;
+    color: #FFF;
+    font-size: 20px;
+    margin: 40px auto 20px auto;
+}
+
+.booking-price-container
+{
+    text-align: center;
+    font-size: 20px;
+    margin: 0px auto;
+    background-color: #FFF;
+    color: #333;
+    width: 90%;
+    max-width: 700px;
+    padding: 20px 0;
+    border-top: 2px solid #3285c6;
+    box-shadow: 0 3px 3px 0 rgba(0,0,0,0.5);
+}
+
+.booking-price-container .colored-text
+{
+    color: #2691e4;
+}
+
+.booking-button-container a
+{
+    font-size: 17px;
+    background: #2691e4;
+    padding: 10px 20px;
+    color: #FFF !important;
+    transition: 0.3s all;
+    text-decoration: none !important;
+
+}
+
+.booking-button-container a:hover
+{
+    background: #444;
+}
+
+/* Small Calculator */
+.qc-quote-calculator.small
+{
+    max-width: 400px;
+}
+
+.qc-quote-calculator.small h2
+{
+    font-size: 25px;
+}
+
+.qc-quote-calculator.small label
+{
+    font-size: 10px;
+}
+
+.qc-quote-calculator.small .info
+{
+    display: none;
+}
+
+.qc-quote-calculator.small input[type="text"] 
+{
+    padding: 2px 5px !important;
+    font-size: 11px;
+}
+
+.qc-quote-calculator.small select
+{
+    height: 20px;
+    font-size: 11px;
+    padding: 0px 5px;
+}
+
+.qc-quote-calculator.small .qc-quote-price, .qc-quote-calculator.small .qc-estimated-delivery
+{
+    font-size: 15px;
+}
+
+.qc-quote-calculator.small .qc-email-container > div
+{
+    margin-left: 0;
+    width: 100%;
+}
+.qc-quote-calculator.small .submit
+{
+    font-size: 13px;
+    line-height: 100%;
+    height: 35px;
+    padding: 5px 10px;
+}
+
+/* Medium Calculator */
+.qc-quote-calculator.medium
+{
+    max-width: 600px;
+}
+
+/* Responsive */
+@media only screen and (max-width: 500px) 
+{
+    .qc-quote-calculator
+    {
+        padding: 20px;
+    }
+    
+    .qc-quote-calculator h2
+    {
+        font-size: 25px;
+    }
+
+    .qc-quote-calculator label
+    {
+        font-size: 10px;
+    }
+
+    .qc-quote-calculator .info
+    {
+        display: none;
+    }
+
+    .qc-quote-calculator input[type="text"] 
+    {
+        padding: 2px 5px !important;
+        font-size: 11px;
+    }
+
+    .qc-quote-calculator select
+    {
+        height: 20px;
+        font-size: 11px;
+        padding: 0px 5px;
+    }
+
+    .qc-quote-calculator .qc-quote-price, .qc-quote-calculator .qc-estimated-delivery
+    {
+        font-size: 15px;
+    }
+
+    .qc-quote-calculator .qc-email-container > div
+    {
+        margin-left: 0;
+        width: 100%;
+    }
+    .qc-quote-calculator .submit
+    {
+        font-size: 13px;
+        line-height: 100%;
+        height: 35px;
+        padding: 5px 10px;
+    }
+}
+
+/* Animations */
+@keyframes spin
+{
+    from
+    {
+        transform: rotate(0deg);
+    }
+    
+    to
+    {
+        transform: rotate(360deg);
+    }
+}
